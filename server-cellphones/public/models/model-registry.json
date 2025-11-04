@@ -1,0 +1,41 @@
+{
+  "models": [
+    {
+      "id": "674b4bafe4d43b5e43d1f71a",
+      "name": "iPhone 15 Pro Max",
+      "modelFile": "iphone-15-pro.glb",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": 1,
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "674b4bafe4d43b5e43d1f71c",
+      "name": "Samsung Galaxy S21 Ultra",
+      "modelFile": "samsung-s21-ultra.glb",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": 1,
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "created": "2024-01-15T00:00:00.000Z",
+    "description": "Registry of 3D models for phone products"
+  }
+}

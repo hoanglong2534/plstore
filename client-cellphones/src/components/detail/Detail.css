@@ -665,3 +665,13 @@
         font-size: 22px;
     }
 }
+
+/* 3D Viewer Section */
+.threed-section {
+    background: var(--bg-secondary);
+    padding: var(--space-xl) 0;
+}
+
+.threed-section .container {
+    max-width: 1200px;
+}

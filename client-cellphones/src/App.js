@@ -26,9 +26,7 @@ import ShippingPage from './pages/ShippingPage';
 import PaymentPolicyPage from './pages/PaymentPolicyPage';
 import VoucherPage from './pages/VoucherPage';
 import ReturnPage from './pages/ReturnPage';
-import ARPage from './pages/ARPage';
-import ARWebXRPage from './pages/ARWebXRPage';
-import ARModelViewerPage from './pages/ARModelViewerPage';
+import ModelViewerPage from './pages/ModelViewerPage';
 import GlobalAIChatbot from './components/GlobalAIChatbot/GlobalAIChatbot';
 
 function PageTransitionWrapper({ children }) {
@@ -124,21 +122,12 @@ function App() {
             {/* Removed store chat route */}
             {/* <Route path='/chat'>
               <ChatPage></ChatPage>
-            </Route> */}
-            <Route path='/admin'>
+            </Route> */}            <Route path='/admin'>
               <AdminPage></AdminPage>
             </Route>
-            {/* AR/VR Experience Page */}
-            <Route path='/ar-experience'>
-              <ARPage></ARPage>
-            </Route>
-            {/* New WebXR (Three.js + R3F) Page */}
-            <Route path='/ar-webxr'>
-              <ARWebXRPage></ARWebXRPage>
-            </Route>
-            {/* Model-Viewer AR Page */}
-            <Route path='/ar-model-viewer'>
-              <ARModelViewerPage></ARModelViewerPage>
+            {/* 3D Model Viewer Page */}
+            <Route path='/model-viewer'>
+              <ModelViewerPage></ModelViewerPage>
             </Route>
             {/* New Footer Pages */}
             <Route path='/about'>

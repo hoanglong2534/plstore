@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download 3D Models - Hướng dẫn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { color: #fff; margin-top: 0; }
+        .step {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+        }
+        .link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00d4ff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        .link:hover {
+            background: #00a8cc;
+            transform: translateY(-2px);
+            transition: all 0.3s;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .warning {
+            background: rgba(255, 152, 0, 0.3);
+            border-left-color: #ff9800;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Hướng dẫn tải 3D Models cho Website</h1>
+        
+        <div class="step">
+            <h2>🎯 Bước 1: Tìm và tải model 3D miễn phí</h2>
+            <p>Truy cập các trang web sau để tải models:</p>
+            <a href="https://sketchfab.com/search?q=phone&type=models" target="_blank" class="link">
+                🔹 Sketchfab - Phone Models
+            </a>
+            <a href="https://poly.pizza/" target="_blank" class="link">
+                🔹 Google Poly Archive
+            </a>
+            <a href="https://free3d.com/3d-models/phone" target="_blank" class="link">
+                🔹 Free3D - Phones
+            </a>
+            <br><br>
+            <p><strong>Gợi ý tìm kiếm:</strong> "smartphone", "iphone", "samsung phone", "mobile phone"</p>
+        </div>
+
+        <div class="step">
+            <h2>🔄 Bước 2: Convert sang định dạng .glb (nếu cần)</h2>
+            <p>Nếu file không phải .glb hoặc .gltf, convert tại:</p>
+            <a href="https://products.aspose.app/3d/conversion" target="_blank" class="link">
+                🔹 Aspose 3D Converter
+            </a>
+            <a href="https://modelconverter.com/convert.html" target="_blank" class="link">
+                🔹 Model Converter
+            </a>
+            <br><br>
+            <p>Chọn output format: <code>GLB</code> (Binary GLTF)</p>
+        </div>
+
+        <div class="step">
+            <h2>📂 Bước 3: Đặt file vào thư mục</h2>
+            <p>Copy file .glb vào:</p>
+            <code>server-cellphones/public/models/</code>
+            <br><br>
+            <p>Ví dụ đặt tên:</p>
+            <ul>
+                <li><code>iphone-15.glb</code></li>
+                <li><code>samsung-s24.glb</code></li>
+                <li><code>xiaomi-14.glb</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>⚙️ Bước 4: Cập nhật code (tùy chọn)</h2>
+            <p>Mở file: <code>client-cellphones/src/data/mockARProducts.js</code></p>
+            <p>Thêm/sửa sản phẩm:</p>
+            <pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto;">
+{
+  id: 'iphone-15',
+  name: 'iPhone 15 Pro Max',
+  arModel: 'http://localhost:4000/models/iphone-15.glb',
+  image: '...',
+  price: 28990000
+}</pre>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Lưu ý quan trọng:</h3>
+            <ul>
+                <li>Kích thước file nên <strong>< 10MB</strong> để tải nhanh</li>
+                <li>Format ưu tiên: <strong>.glb</strong> (nhẹ hơn .gltf)</li>
+                <li>Nếu model quá nặng, giảm polygon count bằng Blender</li>
+                <li>Kiểm tra model có textures/materials đầy đủ</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>🧪 Bước 5: Test</h2>
+            <ol>
+                <li>Khởi động server: <code>cd server-cellphones && npm start</code></li>
+                <li>Khởi động client: <code>cd client-cellphones && npm start</code></li>
+                <li>Truy cập: <code>http://localhost:3000/model-viewer</code></li>
+                <li>Chọn sản phẩm và xem model 3D!</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>🎨 Models mẫu miễn phí tốt:</h2>
+            <ul>
+                <li><a href="https://sketchfab.com/3d-models/iphone-13-pro-max-36d45cf0e8d6477dab1f98b4f8c48e8c" target="_blank" style="color: #00d4ff;">iPhone 13 Pro Max</a></li>
+                <li><a href="https://sketchfab.com/3d-models/samsung-galaxy-s21-ultra-eb1370edfb8c4cb3a094b731ddc77378" target="_blank" style="color: #00d4ff;">Samsung Galaxy S21</a></li>
+                <li><a href="https://sketchfab.com/3d-models/smartphone-86cf91bbf3de4e3f8b968e7e4e5e3d1c" target="_blank" style="color: #00d4ff;">Generic Smartphone</a></li>
+            </ul>
+        </div>
+
+        <hr style="border-color: rgba(255,255,255,0.3); margin: 30px 0;">
+        
+        <p style="text-align: center; opacity: 0.8;">
+            <strong>Cần hỗ trợ?</strong> Xem file <code>HUONG_DAN_3D_VIEWER.md</code>
+        </p>
+    </div>
+</body>
+</html>

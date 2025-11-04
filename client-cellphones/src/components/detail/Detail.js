@@ -10,7 +10,7 @@ import { useDispatch, useSelector as useReduxSelector } from 'react-redux';
 import { getproductById, getAllProduct } from '../../actions/ProductAction';
 import CommentProduct from './CommentProduct';
 import BlogContent from './BlogContent';
-import ARViewer from '../ARViewer/ARViewer';
+import ThreeDViewer from '../ThreeDViewer/ThreeDViewer';
 import ImageWithFallback from '../ImageWithFallback';
 import AIChatbot from '../AIChatbot/AIChatbot';
 
@@ -203,16 +203,15 @@ function Detail(props) {
                                     <CommentProduct></CommentProduct>
                                 </div>
                             )}
-                        </div>
-                    </div>
+                        </div>                    </div>
                 </div>
 
-                    {/* AR/VR Viewer */}
-                    <div className="ar-vr-section">
-                        <div className="container">
-                            <ARViewer product={detailProduct} />
-                        </div>
+                {/* 3D Viewer */}
+                <div className="threed-section">
+                    <div className="container">
+                        <ThreeDViewer product={detailProduct} />
                     </div>
+                </div>
 
                     {/* Related Products */}
                     <div className="related-products">

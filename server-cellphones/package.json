@@ -1,11 +1,10 @@
-{
-  "name": "server",
+{  "name": "server",
   "version": "1.0.0",
   "description": "PL Store AR/VR & AI Server",
-  "main": "ar-ai-server.js",
-  "type": "module",
+  "main": "index.js",  "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "start:ar-ai": "nodemon ar-ai-server.js"
   },
   "author": "",

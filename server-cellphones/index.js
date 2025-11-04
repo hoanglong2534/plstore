@@ -20,9 +20,13 @@ import SelectListrouter from './routers/SelectListRouter.js'
 import ListTypeProductRouter from './routers/ListTypeProductRouter.js'
 import GenAiRouter from './routers/GenAiRouter.js'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 dotenv.config();
 process.env.TOKEN_SECRET;
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -44,8 +48,18 @@ app.use('/selectList', SelectListrouter)
 app.use('/typeList', ListTypeProductRouter)
 app.use('/genai', GenAiRouter)
 
-// Serve static files from the public folder (including uploaded models)
-app.use(express.static(path.join(process.cwd(), 'server-cellphones', 'public')))
+// Serve static files and 3D models
+app.use('/models', express.static(path.join(__dirname, 'public', 'models')))
+app.use(express.static(path.join(__dirname, 'public')))
+
+// API to get 3D model for a product
+app.get('/api/models/:productId', (req, res) => {
+    const { productId } = req.params;
+    res.json({
+        modelUrl: `/models/${productId}.glb`,
+        format: 'glb'
+    });
+})
 
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb')
@@ -64,4 +78,4 @@ app.post('/api/upload', async (req, res) => {
     }
 });
 
-server.listen(PORT, () => console.log(`server running on port ${PORT}`))
+server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))

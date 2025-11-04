@@ -62,13 +62,12 @@ function Header(props) {
         </div>        <ul className="menu-list" id={menu ? "hidden" : ""}>
           <li className="active">
             <Link to="/"> Trang Chủ </Link>
-          </li>
-          <li>
+          </li>          <li>
             <Link to="/product"> Sản Phẩm </Link>
           </li>
           <li>
-            <Link to="/ar-experience"> 
-              <span style={{color: '#ff6b35', fontWeight: '600'}}>🚀 AR/VR</span>
+            <Link to="/model-viewer"> 
+              <span style={{color: '#ff6b35', fontWeight: '600'}}>📱 Xem 3D</span>
             </Link>
           </li>
           {userInfo ? (

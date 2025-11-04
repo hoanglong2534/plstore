@@ -4,7 +4,8 @@ export const mockProductsWithAR = [
         id: 1,
         name: "iPhone 15 Pro Max",
         image: "https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-1-1.jpg",
-        modelUrl: "https://modelviewer.dev/shared-assets/models/Astronaut.glb", // Demo model
+        arModel: "https://modelviewer.dev/shared-assets/models/Astronaut.glb", // Demo model
+        model3D: "https://modelviewer.dev/shared-assets/models/Astronaut.glb", // Demo model
         price: 29990000,
         description: "iPhone 15 Pro Max với chip A17 Pro mạnh mẽ",
         brand: "Apple",
@@ -20,7 +21,8 @@ export const mockProductsWithAR = [
         id: 2,
         name: "Samsung Galaxy S24 Ultra",
         image: "https://cdn.tgdd.vn/Products/Images/42/307174/samsung-galaxy-s24-ultra-grey-1-1.jpg",
-        modelUrl: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb", // Demo model
+        arModel: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb", // Demo model
+        model3D: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb", // Demo model
         price: 27990000,
         description: "Galaxy S24 Ultra với S Pen tích hợp AI",
         brand: "Samsung",
@@ -36,7 +38,8 @@ export const mockProductsWithAR = [
         id: 3,
         name: "Google Pixel 8 Pro",
         image: "https://cdn.tgdd.vn/Products/Images/42/307533/google-pixel-8-pro-blue-1-1.jpg",
-        modelUrl: "https://modelviewer.dev/shared-assets/models/shishkebab.glb", // Demo model
+        arModel: "https://modelviewer.dev/shared-assets/models/shishkebab.glb", // Demo model
+        model3D: "https://modelviewer.dev/shared-assets/models/shishkebab.glb", // Demo model
         price: 21990000,
         description: "Pixel 8 Pro với AI Photography tiên tiến",
         brand: "Google",

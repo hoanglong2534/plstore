@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
-import R3FXRViewer from '../components/ARViewer/R3FXRViewer';
+// import R3FXRViewer from '../components/ARViewer/R3FXRViewer'; // Disabled - using 3D Viewer instead
 import { mockProductsWithAR } from '../data/mockARProducts';
 
 export default function ARWebXRPage() {
@@ -43,11 +43,16 @@ export default function ARWebXRPage() {
                         ))}
                     </div>
                 </div>
-            </div>
-
-            <div className="ar-viewer-section">
+            </div>            <div className="ar-viewer-section">
                 <div className="container">
-                    <R3FXRViewer modelUrl={selectedProduct?.modelUrl || 'https://modelviewer.dev/shared-assets/models/Astronaut.glb'} />
+                    {/* <R3FXRViewer modelUrl={selectedProduct?.modelUrl || 'https://modelviewer.dev/shared-assets/models/Astronaut.glb'} /> */}
+                    <div style={{ padding: '40px', textAlign: 'center', background: '#f0f0f0', borderRadius: '10px' }}>
+                        <h2>🚧 Tính năng AR/VR đã được thay thế bằng 3D Viewer</h2>
+                        <p>Vui lòng truy cập trang chi tiết sản phẩm để xem model 3D</p>
+                        <Link to="/product" className="btn btn-primary" style={{ marginTop: '20px' }}>
+                            Xem sản phẩm
+                        </Link>
+                    </div>
                 </div>
             </div>
 
