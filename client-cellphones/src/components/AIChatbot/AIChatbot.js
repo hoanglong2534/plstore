@@ -6,7 +6,7 @@ function AIChatbot({ products = [] }) {
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: "Xin chào! Tôi là AI Assistant của Cellphones. Tôi có thể giúp bạn tìm hiểu về các sản phẩm điện thoại, so sánh tính năng, và đưa ra gợi ý phù hợp. Bạn muốn hỏi gì?",
+            text: "Xin chào! Tôi là AI Assistant của PL Store. Tôi có thể giúp bạn tìm hiểu về các sản phẩm điện thoại, so sánh tính năng, và đưa ra gợi ý phù hợp. Bạn muốn hỏi gì?",
             sender: 'bot',
             timestamp: new Date()
         }

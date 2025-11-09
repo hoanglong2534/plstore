@@ -34,7 +34,7 @@ function CommentProduct(props) {
       <div className='comment'>
         <Col span={18} align='start' style={{ alignItems:'center'}} xs={24} sm={24} md={18}>
           <div className="comment-area" style={{display: 'flex', alignItems:'center'}}>
-            <textarea placeholder='Xin mời để lại câu hỏi, CellphoneS sẽ trả lời trong 1h từ 8h - 22h mỗi ngày.' rows={10} cols={3} value={value} onChange={(e) => setValue(e.target.value)}></textarea>
+            <textarea placeholder='Xin mời để lại câu hỏi, PL Store sẽ trả lời trong 1h từ 8h - 22h mỗi ngày.' rows={10} cols={3} value={value} onChange={(e) => setValue(e.target.value)}></textarea>
           </div>
           <div className="comment-send">
             <button onClick={() => Comment()}>Gửi</button>

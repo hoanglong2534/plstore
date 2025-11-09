@@ -6,7 +6,7 @@ import {
     useParams,
     Link
 } from "react-router-dom";
-import { useDispatch, useSelector as useReduxSelector } from 'react-redux';
+import { useDispatch, useSelector as useReduxSeleccchator } from 'react-redux';
 import { getproductById, getAllProduct } from '../../actions/ProductAction';
 import CommentProduct from './CommentProduct';
 import BlogContent from './BlogContent';

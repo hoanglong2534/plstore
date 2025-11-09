@@ -5,127 +5,124 @@ import { SignoutUser } from "../../actions/UserAction";
 import { useHistory } from "react-router";
 import { searchProduct } from "../../actions/ProductAction";
 import { Link } from "react-router-dom";
-
-import {
-  DownOutlined,
-  ShoppingCartOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined } from '@ant-design/icons';
 
 function Header(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const dropdownRef = useRef(null);
 
-  const [showAccount, setShowAccount] = useState(false);
-  const [showAccount2, setShowAccount2] = useState(false);
+  const [showAccountDropdown, setShowAccountDropdown] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [search, setSearch] = useState("");
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, error } = userSignin;
-  const [search, setSearch] = useState("");
+  const { userInfo } = userSignin;
   const cartItems = useSelector((state) => state.cart.cartItems);
   const amount = cartItems.reduce((a, b) => a + b.qty, 0);
 
-  const [menu, setMenu] = useState(true);
+  const handleSignout = () => {
+    dispatch(SignoutUser());
+    setShowUserDropdown(false);
+  };
 
-  // Close dropdown when clicking outside
+  const SearchProduct = (e) => {
+    e.preventDefault();
+    if (search.trim()) {
+      history.push("/search");
+      dispatch(searchProduct(search));
+      setSearch('');
+    }
+  };
+
+  const closeAllDropdowns = () => {
+    setShowAccountDropdown(false);
+    setShowUserDropdown(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowAccount(false);
-        setShowAccount2(false);
+        closeAllDropdowns();
       }
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
-  const handleSignout = () => {
-    dispatch(SignoutUser());
-  };
-
-  const SearchProduct = async (e) => {
-    e.preventDefault()
-    await history.push("/search");
-    dispatch(searchProduct(search));
-    setSearch('')
-  };
-
   return (
-    <div className="header">
-      <section id="menu">
-        <div className="logo">          <span>
+    <header className="header">
+      <nav id="menu" ref={dropdownRef}>
+        <div className="logo">
+          <span>
             <Link to="/"> PL STORE </Link>
           </span>
         </div>
+        
         <div className="search">
-          <form onSubmit={(e) => SearchProduct(e)}>
+          <form onSubmit={SearchProduct}>
             <input
               type="text"
               name="search"
               placeholder="Tìm kiếm ..."
-              defaultValue={setSearch}
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
-            ></input>
-            <SearchOutlined onClick={(e) => SearchProduct(e)}></SearchOutlined>
-            {/* <button type="submit" onClick={(e) => SearchProduct(e)}>Search</button> */}
+            />
+            <button type="submit" className="search-btn">🔍</button>
           </form>
-        </div>        <ul className="menu-list" id={menu ? "hidden" : ""} ref={dropdownRef}>
-          <li className="active">
-            <Link to="/"> Trang Chủ </Link>
-          </li>          <li>
-            <Link to="/product"> Sản Phẩm </Link>
-          </li>          <li>
-            <Link to="/product"> 
-              <span style={{color: '#ff6b35', fontWeight: '600'}}>📱 Sản phẩm hot</span>
-            </Link>
-          </li>          {userInfo ? (
-            <li className="dropdown-container">
-              <a onClick={() => setShowAccount2(!showAccount2)} style={{cursor: 'pointer'}}>
-                {userInfo.name}
-                <DownOutlined style={{ fontSize: "14px", marginLeft: "8px" }} />
-              </a>
-              {showAccount2 && (
-                <div className="menu-drop">
-                  {userInfo.isAdmin ? <Link to="/admin">Admin</Link> : ""}
-                  <Link to="/myOrder">Đơn hàng</Link>
-                  <a onClick={() => handleSignout()} style={{cursor: 'pointer'}}>Đăng xuất</a>
-                </div>
-              )}
+        </div>
+        
+        <div className={`menu-container ${isMenuOpen ? 'open' : ''}`}>
+          <ul className="menu-list">
+            <li><Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Trang Chủ</Link></li>
+            <li><Link to="/product" className="nav-link" onClick={() => setMenuOpen(false)}>Sản Phẩm</Link></li>
+            {/* Removed hot product tab */}
+            {userInfo ? (
+              <li className="dropdown-item">
+                <button className="dropdown-trigger" onClick={() => setShowUserDropdown(!showUserDropdown)}>
+                  {userInfo.name} ▼
+                </button>
+                {showUserDropdown && (
+                  <div className="dropdown-menu" onClick={(e) => e.stopPropagation()}>
+                    {userInfo.isAdmin && <Link to="/admin" className="dropdown-link" onClick={closeAllDropdowns}>Admin</Link>}
+                    <Link to="/myOrder" className="dropdown-link" onClick={closeAllDropdowns}>Đơn hàng</Link>
+                    <button className="dropdown-link logout-btn" onClick={handleSignout}>Đăng xuất</button>
+                  </div>
+                )}
+              </li>
+            ) : (
+              <li className="dropdown-item">
+                <button className="dropdown-trigger" onClick={() => setShowAccountDropdown(!showAccountDropdown)}>
+                  Tài khoản ▼
+                </button>
+                {showAccountDropdown && (
+                  <div className="dropdown-menu" onClick={(e) => e.stopPropagation()}>
+                    <Link to="/register" className="dropdown-link" onClick={closeAllDropdowns}>Đăng ký</Link>
+                    <Link to="/login" className="dropdown-link" onClick={closeAllDropdowns}>Đăng nhập</Link>
+                  </div>
+                )}
+              </li>
+            )}
+            
+            <li className="shop-cart">
+              <Link to="/cart" onClick={() => setMenuOpen(false)}>
+                <ShoppingCartOutlined className="cart-icon" />
+                {amount > 0 && <span className="count">{amount}</span>}
+              </Link>
             </li>
-          ) : (
-            <li className="dropdown-container">
-              <a onClick={() => setShowAccount(!showAccount)} style={{cursor: 'pointer'}}>
-                Tài khoản
-                <DownOutlined style={{ fontSize: "14px", marginLeft: "8px" }} />
-              </a>
-              {showAccount && (
-                <div className="menu-drop">
-                  <Link to="/register">Đăng kí</Link>
-                  <Link to="/login">Đăng nhập</Link>
-                </div>
-              )}
-            </li>
-          )}
-          <li className="shop-cart">
-            <Link to="/cart" className="shop-cart">
-              <ShoppingCartOutlined
-                style={{ fontSize: "30px" }}
-              ></ShoppingCartOutlined>
-              <span className="count"> {amount} </span>
-            </Link>
-          </li>
-        </ul>
-        <div className="bar" onClick={() => setMenu(!menu)}>
+          </ul>
+        </div>
+
+        <div className="bar" onClick={() => setMenuOpen(!isMenuOpen)}>
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
         </div>
-      </section>
-    </div>
+      </nav>
+    </header>
   );
 }
 

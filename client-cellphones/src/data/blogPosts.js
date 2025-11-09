@@ -8,7 +8,7 @@ export const blogPosts = [
     author: 'Nguyễn Văn A',
     date: '15/12/2023',
     readTime: '8 phút',
-    image: '/blog/iphone.svg?v=20251028',
+    image: 'https://vatvostudio.vn/wp-content/uploads/2023/09/iPhone-15-Pro-Max-Tren-tay-8.jpg',
     featured: true,
     content: `<p>Trong vòng một tháng qua, iPhone 15 Pro Max đã mang đến trải nghiệm vượt trội về hiệu năng và camera. Khung titan cho cảm giác cầm nắm thoải mái hơn, nhiệt độ được kiểm soát tốt, và thời lượng pin đủ dùng cả ngày.</p>
               <p>Camera tele 5x cho ảnh zoom chi tiết, màn hình ProMotion 120Hz mượt mà, và iOS ổn định.</p>`
@@ -21,7 +21,7 @@ export const blogPosts = [
     author: 'Trần Thị B',
     date: '12/12/2023',
     readTime: '12 phút',
-    image: '/blog/android.svg?v=20251028',
+    image: 'https://cdn.tgdd.vn//News/1299241//top-8-dien-thoai-android-tot-nhat-nam-2022-220314064242-750x500.jpg',
     featured: false,
     content: `<p>Năm 2023 chứng kiến nhiều mẫu Android nổi bật với camera, hiệu năng và pin ấn tượng.</p>`
   },
@@ -33,7 +33,7 @@ export const blogPosts = [
     author: 'Lê Văn C',
     date: '10/12/2023',
     readTime: '6 phút',
-    image: '/blog/security.svg?v=20251028',
+    image: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/dau-hieu-dien-thoai-nhiem-virus.jpg',
     featured: false,
     content: `<ul><li>Cập nhật hệ điều hành thường xuyên</li><li>Không cài app ngoài chợ</li><li>Bật xác thực 2 lớp</li></ul>`
   },
@@ -45,7 +45,7 @@ export const blogPosts = [
     author: 'Phạm Thị D',
     date: '08/12/2023',
     readTime: '10 phút',
-    image: '/blog/trends.svg?v=20251028',
+    image: 'https://cdn.tgdd.vn/Products/42/307174/samsung-galaxy-s24-ultra-5g-1-1020x570.jpg',
     featured: true,
     content: `<p>Màn hình sáng hơn, camera cải tiến và thời lượng pin tốt hơn là những nâng cấp nổi bật.</p>`
   },
@@ -57,7 +57,7 @@ export const blogPosts = [
     author: 'Hoàng Văn E',
     date: '05/12/2023',
     readTime: '15 phút',
-    image: '/blog/technology.svg?v=20251028',
+    image: 'https://vnptai.io/storage/thumbnail/quy-trinh-hoat-dong-cua-ai.jpg',
     featured: false,
     content: `<p>AI trên thiết bị, cảm biến tốt hơn và sạc nhanh hơn sẽ là xu hướng chủ đạo năm 2024.</p>`
   },
@@ -69,7 +69,7 @@ export const blogPosts = [
     author: 'Vũ Thị F',
     date: '03/12/2023',
     readTime: '7 phút',
-    image: '/blog/budget.svg?v=20251028',
+    image: 'https://thanhnien.mediacdn.vn/uploaded/baont/2020_04_02/90hz1_MKPO.jpg?width=500',
     featured: false,
     content: `<p>Xác định nhu cầu camera, hiệu năng, pin và màn hình để chọn mức giá hợp lý.</p>`
   }

@@ -157,26 +157,35 @@ function ShippingPage() {
                         {/* Important Notes */}
                         <div className="policy-section">
                             <h2 className="section-title">Lưu Ý Quan Trọng</h2>
-                            <div className="notes-grid">
+                            <p style={{textAlign:'center',color:'var(--text-secondary)',margin:'-1rem 0 2rem'}}>Những cam kết giúp bạn yên tâm khi nhận hàng từ PL Store</p>
+                            <div className="notes-grid enhanced">
                                 <div className="note-card">
                                     <div className="note-icon">📞</div>
-                                    <h3>Liên Hệ Trước Khi Giao</h3>
-                                    <p>Nhân viên sẽ gọi điện xác nhận trước khi giao hàng</p>
+                                    <div className="note-body">
+                                      <h3>Liên Hệ Trước</h3>
+                                      <p>Nhân viên xác nhận thời gian giao qua điện thoại trước khi xuất kho.</p>
+                                    </div>
                                 </div>
                                 <div className="note-card">
                                     <div className="note-icon">📋</div>
-                                    <h3>Kiểm Tra Hàng Hóa</h3>
-                                    <p>Vui lòng kiểm tra sản phẩm trước khi ký nhận</p>
+                                    <div className="note-body">
+                                      <h3>Kiểm Tra Hàng</h3>
+                                      <p>Được mở hộp kiểm tra ngoại hình & phụ kiện trước khi ký nhận.</p>
+                                    </div>
                                 </div>
                                 <div className="note-card">
                                     <div className="note-icon">🔄</div>
-                                    <h3>Đổi Trả Miễn Phí</h3>
-                                    <p>Hỗ trợ đổi trả miễn phí trong 7 ngày đầu</p>
+                                    <div className="note-body">
+                                      <h3>Đổi Trả 7 Ngày</h3>
+                                      <p>Miễn phí đổi trả với lỗi nhà sản xuất trong vòng 7 ngày đầu.</p>
+                                    </div>
                                 </div>
                                 <div className="note-card">
                                     <div className="note-icon">🛡️</div>
-                                    <h3>Bảo Hiểm Hàng Hóa</h3>
-                                    <p>Tất cả sản phẩm đều được bảo hiểm trong quá trình vận chuyển</p>
+                                    <div className="note-body">
+                                      <h3>Bảo Hiểm Vận Chuyển</h3>
+                                      <p>Thiệt hại trong quá trình giao đều được hỗ trợ theo chính sách.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

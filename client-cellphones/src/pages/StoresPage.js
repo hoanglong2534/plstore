@@ -25,7 +25,7 @@ function StoresPage() {
             features: ['Parking', 'WiFi', 'ATM'],
             rating: 4.7,
             reviews: 1100,
-            image: 'https://images.unsplash.com/photo-1505238680356-667803448bb6?q=80&w=1200&auto=format&fit=crop',
+            image: 'https://cdn.tgdd.vn/Files/2021/10/16/1390930/topzoneeee-1_1280x720-800-resize.jpg',
             isMain: true
         },
         {
@@ -39,7 +39,7 @@ function StoresPage() {
             features: ['Parking', 'WiFi'],
             rating: 4.5,
             reviews: 750,
-            image: 'https://images.unsplash.com/photo-1487730116645-74489c95b41b?q=80&w=1200&auto=format&fit=crop',
+            image: 'https://www.noithatmasta.com/uploaded/Thiet-ke-cua-hang-dien-thoai-apple-store-dep-2.jpg', 
             isMain: false
         },
         {
@@ -53,7 +53,7 @@ function StoresPage() {
             features: ['Parking', 'WiFi'],
             rating: 4.6,
             reviews: 650,
-            image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop',
+            image: 'https://pendecor.vn/uploads/files/2018/12/05/Thiet-ke-cua-hang-dien-thoai-1-.png', 
             isMain: true
         }
     ];

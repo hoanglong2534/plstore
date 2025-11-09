@@ -6,7 +6,7 @@ function GlobalAIChatbot() {
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: "Xin chào! Tôi là AI Assistant của Cellphones. Tôi có thể giúp bạn:\n\n🤖 Trả lời mọi câu hỏi\n📱 Tư vấn sản phẩm điện thoại\n💰 So sánh giá cả\n🔍 Tìm kiếm thông tin\n💡 Đưa ra gợi ý mua sắm\n\nBạn muốn hỏi gì?",
+            text: "Xin chào! Tôi là AI Assistant của PL Store. Tôi có thể giúp bạn:\n\n🤖 Trả lời mọi câu hỏi\n📱 Tư vấn sản phẩm điện thoại\n💰 So sánh giá cả\n🔍 Tìm kiếm thông tin\n💡 Đưa ra gợi ý mua sắm\n\nBạn muốn hỏi gì?",
             sender: 'bot',
             timestamp: new Date()
         }

@@ -152,7 +152,7 @@ function CareersPage() {
                     <div className="hero-content">
                         <h1 className="hero-title">Cơ Hội Nghề Nghiệp</h1>
                         <p className="hero-subtitle">
-                            Tham gia đội ngũ Cellphones và cùng chúng tôi xây dựng tương lai công nghệ
+                            Tham gia đội ngũ PL Store và cùng chúng tôi xây dựng tương lai công nghệ
                         </p>
                         <div className="hero-stats">
                             <div className="stat">

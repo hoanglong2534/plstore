@@ -15,7 +15,7 @@ function AboutPage() {
                     <div className="hero-content">
                         <h1 className="hero-title">Về Chúng Tôi</h1>
                         <p className="hero-subtitle">
-                            Cellphones - Điểm đến tin cậy cho mọi nhu cầu công nghệ
+                            PL Store - Điểm đến tin cậy cho mọi nhu cầu công nghệ
                         </p>
                     </div>
                 </div>
@@ -28,13 +28,13 @@ function AboutPage() {
                         <div className="story-content">
                             <h2>Câu Chuyện Của Chúng Tôi</h2>
                             <p>
-                                Được thành lập vào năm 2010, Cellphones đã trở thành một trong những 
+                                Được thành lập vào năm 2010, PL Store đã trở thành một trong những 
                                 nhà bán lẻ điện thoại và thiết bị công nghệ hàng đầu tại Việt Nam. 
                                 Với hơn 13 năm kinh nghiệm, chúng tôi tự hào mang đến cho khách hàng 
                                 những sản phẩm chất lượng cao với giá cả cạnh tranh.
                             </p>
                             <p>
-                                Từ một cửa hàng nhỏ ở Hà Nội, Cellphones đã mở rộng thành hệ thống 
+                                Từ một cửa hàng nhỏ ở Hà Nội, PL Store đã mở rộng thành hệ thống 
                                 với hơn 50 cửa hàng trên toàn quốc và trang web thương mại điện tử 
                                 phục vụ hàng triệu khách hàng mỗi năm.
                             </p>

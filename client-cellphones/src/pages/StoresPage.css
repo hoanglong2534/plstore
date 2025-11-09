@@ -113,7 +113,7 @@
 .store-phone,
 .store-hours { color: var(--text-secondary); margin-bottom: var(--space-sm); font-size: 0.95rem; }
 
-.store-address { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.store-address { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 2; /* standard property for compatibility */ }
 
 .store-rating { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); }
 
@@ -255,7 +255,7 @@
 
 .store-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var (--shadow-xl);
     border-color: var(--accent-color);
 }
 
@@ -334,8 +334,16 @@
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* fixed 3 columns in one row */
     gap: var(--space-xl);
+    align-items: stretch;
+}
+
+@media (max-width: 992px) {
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .contact-grid { grid-template-columns: 1fr; }
 }
 
 .contact-item {
@@ -343,7 +351,7 @@
     padding: var(--space-xl);
     background: var(--bg-primary);
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
+    box-shadow: var (--shadow-md);
     transition: all var(--transition-normal);
     border: 1px solid var(--gray-200);
 }
