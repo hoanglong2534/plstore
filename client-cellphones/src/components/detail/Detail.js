@@ -6,7 +6,7 @@ import {
     useParams,
     Link
 } from "react-router-dom";
-import { useDispatch, useSelector as useReduxSeleccchator } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getproductById, getAllProduct } from '../../actions/ProductAction';
 import CommentProduct from './CommentProduct';
 import BlogContent from './BlogContent';
@@ -16,11 +16,11 @@ import AIChatbot from '../AIChatbot/AIChatbot';
 function Detail(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
-    const detailProduct = useReduxSelector(state => state.getProductById.product)
+    const detailProduct = useSelector(state => state.getProductById.product)
     const [selectedImage, setSelectedImage] = useState(0);
     const [activeTab, setActiveTab] = useState('description');
 
-    const allProducts = useReduxSelector(state => state.allProduct?.product || []);
+    const allProducts = useSelector(state => state.allProduct?.product || []);
     
     // Touch/swipe handling
     const [touchStart, setTouchStart] = useState(0);
