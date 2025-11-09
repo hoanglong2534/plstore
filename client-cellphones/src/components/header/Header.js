@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
 import { SignoutUser } from "../../actions/UserAction";
@@ -15,8 +15,7 @@ import {
 function Header(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  
+  const dropdownRef = useRef(null);
 
   const [showAccount, setShowAccount] = useState(false);
   const [showAccount2, setShowAccount2] = useState(false);
@@ -28,6 +27,21 @@ function Header(props) {
   const amount = cartItems.reduce((a, b) => a + b.qty, 0);
 
   const [menu, setMenu] = useState(true);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowAccount(false);
+        setShowAccount2(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleSignout = () => {
     dispatch(SignoutUser());
@@ -59,47 +73,40 @@ function Header(props) {
             <SearchOutlined onClick={(e) => SearchProduct(e)}></SearchOutlined>
             {/* <button type="submit" onClick={(e) => SearchProduct(e)}>Search</button> */}
           </form>
-        </div>        <ul className="menu-list" id={menu ? "hidden" : ""}>
+        </div>        <ul className="menu-list" id={menu ? "hidden" : ""} ref={dropdownRef}>
           <li className="active">
             <Link to="/"> Trang Chủ </Link>
           </li>          <li>
             <Link to="/product"> Sản Phẩm </Link>
-          </li>
-          <li>
-            <Link to="/model-viewer"> 
-              <span style={{color: '#ff6b35', fontWeight: '600'}}>📱 Xem 3D</span>
+          </li>          <li>
+            <Link to="/product"> 
+              <span style={{color: '#ff6b35', fontWeight: '600'}}>📱 Sản phẩm hot</span>
             </Link>
-          </li>
-          {userInfo ? (
-            <li onClick={() => setShowAccount2(!showAccount2)}>
-              <Link>
+          </li>          {userInfo ? (
+            <li className="dropdown-container">
+              <a onClick={() => setShowAccount2(!showAccount2)} style={{cursor: 'pointer'}}>
                 {userInfo.name}
-                <DownOutlined style={{ fontSize: "14px" }} />
-              </Link>
-              {showAccount2 ? (
+                <DownOutlined style={{ fontSize: "14px", marginLeft: "8px" }} />
+              </a>
+              {showAccount2 && (
                 <div className="menu-drop">
                   {userInfo.isAdmin ? <Link to="/admin">Admin</Link> : ""}
                   <Link to="/myOrder">Đơn hàng</Link>
-                  <Link onClick={() => handleSignout()}>Đăng xuất</Link>
+                  <a onClick={() => handleSignout()} style={{cursor: 'pointer'}}>Đăng xuất</a>
                 </div>
-              ) : (
-                ""
               )}
             </li>
           ) : (
-            <li onClick={() => setShowAccount(!showAccount)}>
-              <Link>
+            <li className="dropdown-container">
+              <a onClick={() => setShowAccount(!showAccount)} style={{cursor: 'pointer'}}>
                 Tài khoản
-                <DownOutlined style={{ fontSize: "14px" }} />
-              </Link>
-
-              {showAccount ? (
+                <DownOutlined style={{ fontSize: "14px", marginLeft: "8px" }} />
+              </a>
+              {showAccount && (
                 <div className="menu-drop">
-                  <Link to="register">Đăng kí</Link>
-                  <Link to="login">Đăng nhập</Link>
+                  <Link to="/register">Đăng kí</Link>
+                  <Link to="/login">Đăng nhập</Link>
                 </div>
-              ) : (
-                ""
               )}
             </li>
           )}

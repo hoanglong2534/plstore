@@ -10,7 +10,6 @@ import { useDispatch, useSelector as useReduxSelector } from 'react-redux';
 import { getproductById, getAllProduct } from '../../actions/ProductAction';
 import CommentProduct from './CommentProduct';
 import BlogContent from './BlogContent';
-import ThreeDViewer from '../ThreeDViewer/ThreeDViewer';
 import ImageWithFallback from '../ImageWithFallback';
 import AIChatbot from '../AIChatbot/AIChatbot';
 
@@ -22,6 +21,10 @@ function Detail(props) {
     const [activeTab, setActiveTab] = useState('description');
 
     const allProducts = useReduxSelector(state => state.allProduct?.product || []);
+    
+    // Touch/swipe handling
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
 
     useEffect(() => {
         dispatch(getproductById(id))
@@ -69,6 +72,55 @@ function Detail(props) {
         return shuffled.slice(0, 4);
     }, [allProducts, detailProduct?._id]);
 
+    // Navigation functions
+    const goToNextImage = () => {
+        if (productImages.length > 1) {
+            setSelectedImage(selectedImage === productImages.length - 1 ? 0 : selectedImage + 1);
+        }
+    };
+
+    const goToPrevImage = () => {
+        if (productImages.length > 1) {
+            setSelectedImage(selectedImage === 0 ? productImages.length - 1 : selectedImage - 1);
+        }
+    };
+
+    // Touch handlers
+    const handleTouchStart = (e) => {
+        setTouchEnd(0);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        if (isLeftSwipe) goToNextImage();
+        if (isRightSwipe) goToPrevImage();
+    };
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                goToPrevImage();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                goToNextImage();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImage, productImages.length]);
+
     return (
         <section id="detail">
             {
@@ -107,24 +159,74 @@ function Detail(props) {
                         <div className="detail-grid">
                             {/* Image Gallery */}
                             <div className="image-gallery">
-                                <div className="main-image">
+                                <div 
+                                    className="main-image"
+                                    onTouchStart={handleTouchStart}
+                                    onTouchMove={handleTouchMove}
+                                    onTouchEnd={handleTouchEnd}
+                                >
                                     <ImageWithFallback src={productImages[selectedImage]} alt={detailProduct.name} />
+                                    
+                                    {/* Navigation Arrows */}
+                                    {productImages.length > 1 && (
+                                        <>
+                                            <button 
+                                                className="nav-btn nav-prev"
+                                                onClick={goToPrevImage}
+                                                title="Ảnh trước (←)"
+                                            >
+                                                &#8249;
+                                            </button>
+                                            <button 
+                                                className="nav-btn nav-next"
+                                                onClick={goToNextImage}
+                                                title="Ảnh tiếp theo (→)"
+                                            >
+                                                &#8250;
+                                            </button>
+                                        </>
+                                    )}
+                                    
+                                    {/* Image Counter */}
+                                    {productImages.length > 1 && (
+                                        <div className="image-counter">
+                                            {selectedImage + 1} / {productImages.length}
+                                        </div>
+                                    )}
+                                    
                                     <div className="image-zoom">
                                         <span>🔍</span>
                                     </div>
                                 </div>
+                                
+                                {/* Thumbnail Navigation */}
                                 {hasThumbnails && (
-                                <div className="thumbnail-images">
-                                    {productImages.map((image, index) => (
-                                        <div 
-                                            key={index}
-                                            className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
-                                            onClick={() => setSelectedImage(index)}
-                                        >
-                                            <ImageWithFallback src={image} alt={`${detailProduct.name} ${index + 1}`} />
+                                    <div className="thumbnail-container">
+                                        <div className="thumbnail-images">
+                                            {productImages.map((image, index) => (
+                                                <div 
+                                                    key={index}
+                                                    className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                                    onClick={() => setSelectedImage(index)}
+                                                >
+                                                    <ImageWithFallback src={image} alt={`${detailProduct.name} ${index + 1}`} />
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                )}
+                                
+                                {/* Dot Indicators */}
+                                {productImages.length > 1 && (
+                                    <div className="dot-indicators">
+                                        {productImages.map((_, index) => (
+                                            <button
+                                                key={index}
+                                                className={`dot ${selectedImage === index ? 'active' : ''}`}
+                                                onClick={() => setSelectedImage(index)}
+                                            />
+                                        ))}
+                                    </div>
                                 )}
                             </div>
 
@@ -206,14 +308,7 @@ function Detail(props) {
                         </div>                    </div>
                 </div>
 
-                {/* 3D Viewer */}
-                <div className="threed-section">
-                    <div className="container">
-                        <ThreeDViewer product={detailProduct} />
-                    </div>
-                </div>
-
-                    {/* Related Products */}
+                {/* Related Products */}
                     <div className="related-products">
                         <div className="container">
                             <h2 className="section-title">Sản phẩm liên quan</h2>

@@ -26,7 +26,6 @@ import ShippingPage from './pages/ShippingPage';
 import PaymentPolicyPage from './pages/PaymentPolicyPage';
 import VoucherPage from './pages/VoucherPage';
 import ReturnPage from './pages/ReturnPage';
-import ModelViewerPage from './pages/ModelViewerPage';
 import GlobalAIChatbot from './components/GlobalAIChatbot/GlobalAIChatbot';
 
 function PageTransitionWrapper({ children }) {
@@ -123,12 +122,7 @@ function App() {
             {/* <Route path='/chat'>
               <ChatPage></ChatPage>
             </Route> */}            <Route path='/admin'>
-              <AdminPage></AdminPage>
-            </Route>
-            {/* 3D Model Viewer Page */}
-            <Route path='/model-viewer'>
-              <ModelViewerPage></ModelViewerPage>
-            </Route>
+              <AdminPage></AdminPage>            </Route>
             {/* New Footer Pages */}
             <Route path='/about'>
               <AboutPage></AboutPage>
